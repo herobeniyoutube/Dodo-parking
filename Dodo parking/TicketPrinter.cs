@@ -8,7 +8,7 @@ namespace Dodo_parking
 {
     public static class TicketPrinter
     {
-        public static  string GetNewTicket() 
+        public static  string Print() 
         { 
         return Guid.NewGuid().ToString();
         }

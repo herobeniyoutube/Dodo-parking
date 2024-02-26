@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dodo_parking
 {
-    public class ParkingInfoDBEntity : NewCarArrived
+    public class ParkingInfoDBEntity : Car
     {
         public ParkingInfoDBEntity(string carScale, string carNumberPlate, string parkingTicket) : base(carScale, carNumberPlate)
         {
