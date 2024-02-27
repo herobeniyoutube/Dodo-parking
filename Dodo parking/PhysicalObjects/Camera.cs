@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Dodo_parking
+namespace Dodo_parking.PhysicalObjects
 {
     public static class Camera
     {
         //возвращает экземпляр машины, которая стоит на въезде
-        
+
         public static Car GetCarInstance()
         {
             var car = GetRandomCarInstance();
@@ -18,7 +18,7 @@ namespace Dodo_parking
 
             return car;
         }
-       
+
         private static Car GetRandomCarInstance()
         {
             Random rn = new Random();

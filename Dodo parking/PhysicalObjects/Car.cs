@@ -5,20 +5,23 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dodo_parking
+namespace Dodo_parking.PhysicalObjects
 {
-   
-    public class Car 
+
+    public class Car
     {
-         public Car(string carScale, string carNumberPlate)
+        public Car(string carScale, string carNumberPlate)
         {
-            this.CarScale = carScale;
-            this.CarNumberPlate = carNumberPlate;
-             
-             
+            CarScale = carScale;
+            CarNumberPlate = carNumberPlate;
+
+
         }
+
         public string CarScale { get; set; }
+
         public string CarNumberPlate { get; set; }
+
 
     }
 }

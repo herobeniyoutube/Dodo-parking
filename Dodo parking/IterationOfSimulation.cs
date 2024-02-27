@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dodo_parking.BL;
+using Dodo_parking.DAL;
+using Dodo_parking.PhysicalObjects;
 
 namespace Dodo_parking
 {
@@ -17,20 +20,30 @@ namespace Dodo_parking
             if (isThereACarInFrontOfTheCamera)
             {
                 Car car = Camera.GetCarInstance();
-                ParkingInfoDBEntity carEntity = null;
+                ParkedCar carEntity = null;
                 bool isThereFreeSpace = TakenLotsCount.ParkingFillnessStatus(car.CarScale);
 
 
                 if (isThereFreeSpace)
                 {
-                    string ticket = TicketPrinter.Print();
-                    Gate.Open();
-                    carEntity = new ParkingInfoDBEntity(car.CarScale, car.CarNumberPlate, ticket);
+                    
+                    
+                    
                     using (ParkingInfoDBContext db = new ParkingInfoDBContext())
                     {
-                        db.ParkingLots.Add(carEntity);
+                        var dbConnection = db.ParkingLots;
+                        
+                        ParkingInfoDBEntity row = dbConnection.FirstOrDefault(a => a.CarScale == car.CarScale && a.ParkingTicketId == "");
+                        Ticket ticketInstance = TicketPrinter.Print(row.parkingLotId);
+                        carEntity = new ParkedCar(car.CarScale, car.CarNumberPlate, ticketInstance.parkingTicketId, ticketInstance.parkingTimeStarted);
+                        row.CarNumberPlate = carEntity.CarNumberPlate;
+                        row.WhenParked = carEntity.WhenParked;
+                        row.ParkingTicketId = carEntity.ParkingTicketId;
+
                         db.SaveChanges();
+                        Gate.Open();
                         Console.WriteLine($"Машина {carEntity.CarScale} добавлена в базу");
+                        
                     }
                 }
                 else

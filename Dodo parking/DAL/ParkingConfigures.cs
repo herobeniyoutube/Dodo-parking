@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dodo_parking
+namespace Dodo_parking.DAL
 {
     public class ParkingConfigures
     {

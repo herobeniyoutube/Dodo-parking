@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Dodo_parking
+namespace Dodo_parking.PhysicalObjects
 {
     public static class Gate
     {
@@ -16,13 +16,14 @@ namespace Dodo_parking
             Console.WriteLine("Шлагбаум открыт");
             //Thread.Sleep(1000);
             Close();
+            Console.WriteLine();
         }
-        private static void Close() { Console.WriteLine(); }
+        private static void Close() { Console.WriteLine("Шлагбаум закрыт"); }
         public static void GateOpener(CarDirection carDirection, bool hasFreeSpace, string carScale)
         {
             if (carDirection == CarDirection.enter)
             {
-                
+
             }
             else
             {

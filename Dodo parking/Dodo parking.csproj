@@ -17,9 +17,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DAL\" />
-    <Folder Include="BL\" />
-  </ItemGroup>
-
 </Project>
