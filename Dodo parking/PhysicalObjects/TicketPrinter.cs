@@ -15,8 +15,5 @@ namespace Dodo_parking.PhysicalObjects
             Console.WriteLine($"Билет на место {lotId} выдан");
             return ticketInstance;
         }
-
-
-
     }
 }

@@ -15,6 +15,7 @@ namespace Dodo_parking.DAL
             LargeCarLotsCount = largeCarLotsCount;
             SmallCarLotsCount = smallCarLotsCount;
         }
+
         public int SmallCarLotsCount { get; set; }
         public int MediumCarLotsCount { get; set; }
         public int LargeCarLotsCount { get; set; }

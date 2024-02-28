@@ -8,7 +8,6 @@ using Dodo_parking.DAL;
 
 namespace Dodo_parking.BL
 {
-
     public class ParkedCar : ParkingInfoDBEntity
     {
         public ParkedCar(string carScale, string carNumberPlate, string parkingTicket, DateTime timeArrived) : base(carScale, carNumberPlate)
@@ -17,17 +16,12 @@ namespace Dodo_parking.BL
             CarNumberPlate = carNumberPlate;
             WhenParked = timeArrived;
             ParkingTicketId = parkingTicket;
-            sw.Start();
         }
-        Stopwatch sw = new Stopwatch();
+
         public int Id { get; set; }
-        public bool IsTaken = false;
         public string ParkingTicketId { get; set; }
-        public string parkingLotId { get; set; }
-        public bool IsPayed = false;
+        public string ParkingLotId { get; set; }
         public DateTime WhenParked { get; set; }
-
-
     }
 
 }

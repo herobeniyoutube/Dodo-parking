@@ -20,41 +20,31 @@ namespace Dodo_parking
             if (isThereACarInFrontOfTheCamera)
             {
                 Car car = Camera.GetCarInstance();
-                ParkedCar carEntity = null;
                 bool isThereFreeSpace = TakenLotsCount.ParkingFillnessStatus(car.CarScale);
-
 
                 if (isThereFreeSpace)
                 {
-                    
-                    
-                    
                     using (ParkingInfoDBContext db = new ParkingInfoDBContext())
                     {
                         var dbConnection = db.ParkingLots;
-                        
-                        ParkingInfoDBEntity row = dbConnection.FirstOrDefault(a => a.CarScale == car.CarScale && a.ParkingTicketId == "");
-                        Ticket ticketInstance = TicketPrinter.Print(row.parkingLotId);
-                        carEntity = new ParkedCar(car.CarScale, car.CarNumberPlate, ticketInstance.parkingTicketId, ticketInstance.parkingTimeStarted);
-                        row.CarNumberPlate = carEntity.CarNumberPlate;
-                        row.WhenParked = carEntity.WhenParked;
-                        row.ParkingTicketId = carEntity.ParkingTicketId;
+
+                        ParkingInfoDBEntity dbRow = dbConnection.FirstOrDefault(a => a.CarScale == car.CarScale && a.ParkingTicketId == "");
+                        Ticket ticketInstance = TicketPrinter.Print(dbRow.ParkingLotId);
+                        ParkedCar carEntity = new ParkedCar(car.CarScale, car.CarNumberPlate, ticketInstance.ParkingTicketId, ticketInstance.ParkingTimeStarted);
+
+                        dbRow.CarNumberPlate = carEntity.CarNumberPlate;
+                        dbRow.WhenParked = carEntity.WhenParked;
+                        dbRow.ParkingTicketId = carEntity.ParkingTicketId;
 
                         db.SaveChanges();
                         Gate.Open();
                         Console.WriteLine($"Машина {carEntity.CarScale} добавлена в базу");
-                        
                     }
                 }
                 else
                 {
                     Console.WriteLine($"На парковке недостаточно мест {car.CarScale} размера");
                 }
-
-
-
-
-
             }
             Console.WriteLine();
         }

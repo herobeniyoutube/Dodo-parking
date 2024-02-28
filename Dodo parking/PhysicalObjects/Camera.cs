@@ -10,12 +10,10 @@ namespace Dodo_parking.PhysicalObjects
     public static class Camera
     {
         //возвращает экземпляр машины, которая стоит на въезде
-
         public static Car GetCarInstance()
         {
             var car = GetRandomCarInstance();
             Console.WriteLine($"Перед шлагбауном стоит машина размера {car.CarScale} с номером {car.CarNumberPlate}");
-
             return car;
         }
 
@@ -25,7 +23,6 @@ namespace Dodo_parking.PhysicalObjects
             var value = rn.Next(1, 4);
             string carScale = "";
             string carNumberPlate = Guid.NewGuid().ToString().Substring(0, 8);
-            Car car;
 
             switch (value)
             {
@@ -38,21 +35,19 @@ namespace Dodo_parking.PhysicalObjects
                 case 3:
                     carScale = "Large";
                     break;
-
             }
-            car = new Car(carScale, carNumberPlate);
+            Car car = new Car(carScale, carNumberPlate);
             return car;
         }
+
         public static bool CarsAtFrontMonitoring()
         {
+            //делает вид, будто перед камерой пока нет машин
             while (true)
             {
                 Thread.Sleep(1000);
                 return true;
             }
-
         }
-
-
     }
 }

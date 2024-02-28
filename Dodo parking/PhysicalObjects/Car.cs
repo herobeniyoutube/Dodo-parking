@@ -7,21 +7,15 @@ using System.Threading.Tasks;
 
 namespace Dodo_parking.PhysicalObjects
 {
-
     public class Car
     {
         public Car(string carScale, string carNumberPlate)
         {
             CarScale = carScale;
             CarNumberPlate = carNumberPlate;
-
-
         }
 
         public string CarScale { get; set; }
-
         public string CarNumberPlate { get; set; }
-
-
     }
 }

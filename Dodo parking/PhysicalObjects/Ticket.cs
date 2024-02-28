@@ -10,13 +10,13 @@ namespace Dodo_parking.PhysicalObjects
     {
         public Ticket(string lotId, string parkingTicketId)
         {
-            this.lotId = lotId;
-            this.parkingTicketId = parkingTicketId;
-            parkingTimeStarted = DateTime.Now;
+            this.LotId = lotId;
+            this.ParkingTicketId = parkingTicketId;
+            ParkingTimeStarted = DateTime.Now;
         }
 
-        public string lotId { get; set; }
-        public DateTime parkingTimeStarted { get; set; }
-        public string parkingTicketId { get; set; }
+        public string LotId { get; set; }
+        public DateTime ParkingTimeStarted { get; set; }
+        public string ParkingTicketId { get; set; }
     }
 }
